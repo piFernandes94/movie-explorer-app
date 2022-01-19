@@ -1,0 +1,59 @@
+@import "variables";
+//font properties mixin
+@mixin font($size, $line-height: 1.2, $family: ''){
+  font-size: rem($size);
+  line-height: rem($line-height); //calculate line-height percentage based on given font-size.
+
+  @if $family != ''{
+    font-family:$family
+  }
+}
+
+@mixin alignItems($position){
+  align-items: $position;
+  -ms-flex-align: $position;
+}
+
+@mixin justifyContent($position){
+  justify-content: $position;
+  -ms-flex-pack: $position;
+}
+
+//Limit text lines
+@mixin linelimit($clamp, $height, $orientation, $fixedHeight: false) {
+  display: -webkit-box;
+  -webkit-line-clamp: $clamp;
+  -webkit-box-orient: $orientation;
+  @if $fixedHeight { height: rem($height); }
+  @else { max-height: rem($height); }
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//eg. @include animation('opacity-change 15s linear infinite alternate both')
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+//eg. @include keyframes(opacity-change) { 0% { opacity: 0; } 100% { opacity: 1; } }
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}

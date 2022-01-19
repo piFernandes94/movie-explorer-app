@@ -1,0 +1,120 @@
+.homepage {padding-bottom:rem(50);
+    .search-row{display:flex;align-items:center;justify-content: center;padding-top:rem(50);padding-bottom: rem(25);
+        input{@include font(18,22);width:rem(300);padding:rem(5) rem(10);}
+        .search-btn{height: rem(35);width:rem(35);display:flex;align-items: center;justify-content: center;cursor: pointer;border-radius: 50%;background:#333;color:#FFF;margin-left:rem(25);transition:all 0.3s ease;
+            svg{fill:#FFF;}
+            &:hover{opacity: 0.8;}
+        }
+    }
+    .movie-list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .movie {
+            width: 100%;
+            padding: 0 0 rem(25) 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            .bg-image {
+                height: rem(320);
+                width: 100%;
+                background-size: cover;
+                background-position: center;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+            .text-content {
+                border: 1px solid rgba(51, 51, 51, 0.5);
+                border-top: none;
+                padding: rem(15);
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                .title-wrapper {
+                    padding-bottom: rem(15);
+                    display: flex;
+                    align-items: center;
+                    .title {
+                        @include font(16, 20);
+                        font-weight: bold;
+                        @include linelimit(1, 20 * 1, vertical);
+                    }
+                    .year {
+                        @include font(16, 18);
+                        padding-left: rem(25);
+                        margin-left: auto;
+                    }
+                }
+                .desc {
+                    @include font(14, 16);
+                    color: $color--sec;
+                    @include linelimit(3, 16 * 3, vertical);
+                }
+            }
+            &:hover {
+                transform: scale(1.02);
+            }
+            &:nth-child(3n + 1) {
+                .text-content {
+                    background: #fff2cc;
+                }
+            }
+            &:nth-child(3n + 2) {
+                .text-content {
+                    background: #d9ead3;
+                }
+            }
+            &:nth-child(3n + 3) {
+                .text-content {
+                    background: #c9daf8;
+                }
+            }
+        }
+    }
+
+    .MuiPagination-ul{justify-content:center;}
+}
+
+
+//will be using bootstrap breakpoints
+@media screen and (min-width: 576px) {
+    .homepage{
+        .movie-list{
+            .movie{width:50%;padding: 0 rem(10) rem(35) rem(10);}
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 992px) {
+    .homepage {
+        .movie-list {
+            .movie {
+                width: 33.33%;
+                padding: 0 rem(20) rem(35) rem(20);
+                .bg-image {
+                    height: rem(420);
+                }
+                .text-content {
+                    height: rem(
+                        124
+                    ); //fixed height to make sure item are always same height even when descriptions are shorter
+                    .title-wrapper {
+                        .title {
+                            @include font(20, 24);
+                        }
+                        .year {
+                            @include font(16, 18);
+                        }
+                    }
+                    .desc {
+                        @include font(16, 18);
+                        @include linelimit(3, 18 * 3, vertical);
+                    }
+                }
+            }
+        }
+    }
+}

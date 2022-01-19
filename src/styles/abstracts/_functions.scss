@@ -1,0 +1,5 @@
+//Function to convert sizes from px to rem
+@function rem($pixels, $context: $browser-context){
+    @return #{$pixels/$context}rem;
+  }
+  
